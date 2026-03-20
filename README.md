@@ -1,5 +1,12 @@
 # WDD430.002---Web-Full-Stack-Development-TeamProject
 
+## Installation Instructions
+
+ * Clone this repository
+ * Enter the directory `wdd430-team-project`
+ * Run `npm install .`
+ * Test your installation by running `npm run dev`
+
 ## Team Members
 
  * David Alonso Fontes Luna
