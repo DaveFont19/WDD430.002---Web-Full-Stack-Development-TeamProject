@@ -1,4 +1,5 @@
 import NavBar from "./ui/navbar";
+import { lora, ptSans } from "./ui/fonts";
 
 export default function RootLayout({
   children,
