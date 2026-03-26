@@ -1,9 +1,23 @@
+import Image from "next/image";
 
 export default function Home() {
   return (
     <div >
-      <div id="Hero">
-        <p>Put Hero Here</p>
+      <div className="hero-container">
+        <Image
+          src="/hero-desktop.png"
+          width={1920}
+          height={500}
+          className="hero-desktop"
+          alt="Close-up of a local artisan's hands carefully crafting a unique handmade product in a traditional workshop setting."
+        />
+        <Image
+          src="/hero-mobile.png"
+          width={800}
+          height={600}
+          className="hero-mobile"
+          alt="Close-up of a local artisan's hands carefully crafting a unique handmade product in a traditional workshop setting."
+        />
       </div>
       <div id="random-products">
         <p>Put random products here</p>
