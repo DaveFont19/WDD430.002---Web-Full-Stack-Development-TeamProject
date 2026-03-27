@@ -13,9 +13,9 @@ export default function RootLayout({
         
         {children}
       
-        <footer>
-          <p>Footer Goes HERE</p>
-        </footer>
+        
+        <Footer />
+      
       </body>
     </html>
   );
