@@ -47,3 +47,50 @@ a {
     color-scheme: dark;
   }
 }
+
+
+
+
+
+
+/* HERO IMAGE STARTS*/
+.hero-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0; 
+  overflow: hidden;
+}
+
+.hero-desktop, 
+.hero-mobile {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero-desktop {
+  display: none;
+}
+
+.hero-mobile {
+  display: block; 
+  max-height: 600px;
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    height: 500px;
+  }
+
+  .hero-desktop {
+    display: block;
+    height: 500px;
+    object-position: center;
+  }
+
+  .hero-mobile {
+    display: none;
+  }
+}
+/*HERO IMAGE ENDS*/
