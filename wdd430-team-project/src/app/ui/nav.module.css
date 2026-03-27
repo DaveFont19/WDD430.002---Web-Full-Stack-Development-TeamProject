@@ -1,0 +1,28 @@
+.nav {
+    background-color: hsl(215, 29%, 19%);
+    color: #ffffff;
+    padding: 40px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navLeft {
+    display: flex;
+    gap: 1rem;
+}
+
+.navRight {
+    display: flex;
+    gap: 1rem;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.active {
+    text-decoration: underline;
+    font-weight: 600;
+}

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import styles from './nav.module.css'
 
 export default function NavLinks() {
 	const pathname = usePathname() as string
@@ -9,24 +10,24 @@ export default function NavLinks() {
 	const onLoginPage = pathname === '/login'
 
 	return (
-		<nav>
+		<nav className={styles.nav}>
 			{/* Left side */}
-			<div>
+			<div className={styles.navLeft}>
 				<Link
 					href="/"
-					className={'active'}>
+					className={styles.link}>
 					Home
 				</Link>
 			</div>
 
 			{/* Right side */}
-			<div>
+			<div className={styles.navRight}>
 				{/* Will update tot {!User} when login user logic exists. Right now shows login link on every page except when
 				you are on the login page */}
 				{!onLoginPage && (
 					<Link
 						href="/login"
-						className={'active'}
+						className={styles.link}
 					>
 						Login
 					</Link>
@@ -36,7 +37,7 @@ export default function NavLinks() {
 				{onLoginPage && (
 					<Link
 						href="/profile"
-						className={'active'}
+						className={styles.link}
 					>
 						Profile
 					</Link>
@@ -44,7 +45,7 @@ export default function NavLinks() {
 
 				<Link
 					href="/cart"
-					className={'active'}
+					className={styles.link}
 				>
 					Cart
 				</Link>
