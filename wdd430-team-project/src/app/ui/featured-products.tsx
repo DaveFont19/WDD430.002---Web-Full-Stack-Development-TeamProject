@@ -59,7 +59,7 @@ export default async function FeatureProducts() {
           return (
             <Link
               key={product.id}
-              href={`/product/%{product.id}`}
+              href={`/product/${product.id}`}
               className="featured-product-link"
             >
               <Image
@@ -68,7 +68,10 @@ export default async function FeatureProducts() {
                 width={300}
                 height={300}
                 className="featured-product-image"
-              />
+				  />
+				  <p>
+					  {product.name}
+				  </p>
             </Link>
           );
         })}
