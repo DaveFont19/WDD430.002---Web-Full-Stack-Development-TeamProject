@@ -1,4 +1,5 @@
 import Image from "next/image";
+import FeatureProducts from "./ui/featured-products";
 
 export default function Home() {
   return (
@@ -19,9 +20,7 @@ export default function Home() {
           alt="Close-up of a local artisan's hands carefully crafting a unique handmade product in a traditional workshop setting."
         />
       </div>
-      <div id="random-products">
-        <p>Put random products here</p>
-      </div>
+      <FeatureProducts />
     </div>
   );
 }
