@@ -1,11 +1,12 @@
 import Image from "next/image";
 import styles from "./footer.module.css";
 import FooterLinks from "./footer-links";
+import { lora } from "./fonts";
 
 
 export default function Footer() {
     return (
-        <footer className={styles.footer}>
+        <footer className={`${styles.footer} ${lora.className}`}>
             <div className={styles.footerContainer}>
                 <div className={styles.footerSection}>
                     <Image
