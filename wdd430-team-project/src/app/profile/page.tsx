@@ -1,3 +1,5 @@
+import LogoutButton from "../ui/logout-button";
+
 export default function Page() {
     return (
         <div >
@@ -7,6 +9,7 @@ export default function Page() {
             <div>
                 <p>Profile page</p>
             </div>
+            <LogoutButton />
         </div>
     );
 }

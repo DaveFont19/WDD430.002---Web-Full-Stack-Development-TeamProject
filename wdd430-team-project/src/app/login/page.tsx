@@ -1,12 +1,21 @@
-export default function Page() {
+import LoginForm from "../ui/login-form";
+import { Suspense } from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Login',
+};
+
+export default function LoginPage() {
     return (
-        <div >
-            <div id="Hero">
-                <p>Put Hero Here</p>
-            </div>
+        <main className="flex items-center justify-center md:h-screen">
             <div>
-                <p>Login page</p>
+                <div>
+                </div>
+                <Suspense>
+                    <LoginForm />
+                </Suspense>
             </div>
-        </div>
+        </main>
     );
 }
