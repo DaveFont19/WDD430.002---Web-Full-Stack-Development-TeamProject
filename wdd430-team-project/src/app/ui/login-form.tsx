@@ -3,17 +3,18 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from "./login-form.module.css";
 
 export default function LoginForm() {
-    const router = useRouter()
+    const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("")
+    const [error, setError] = useState("");
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         setError("");
-        //console.log("Login attempt:", { email, password });
+
         const result = await signIn("credentials", {
             email,
             password,
@@ -22,46 +23,46 @@ export default function LoginForm() {
 
         if (result?.error) {
             setError("Invalid email or password");
-            setPassword("")
+            setPassword("");
             return;
         }
 
         router.push("/profile");
     }
 
-
     return (
-        <form onSubmit={handleSubmit}>
-            {error && <p>{error}</p>}
-            <div>
-                <label htmlFor="email">
+        <form onSubmit={handleSubmit} className={styles.form}>
+            {error && <p className={styles.error}>{error}</p>}
+
+            <div className={styles.field}>
+                <label htmlFor="email" className={styles.label}>
                     Email
                 </label>
                 <input
                     id="email"
                     type="email"
+                    className={styles.input}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
             </div>
 
-            <div>
-                <label htmlFor="password">
+            <div className={styles.field}>
+                <label htmlFor="password" className={styles.label}>
                     Password
                 </label>
                 <input
                     id="password"
                     type="password"
+                    className={styles.input}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
             </div>
 
-            <button
-                type="submit"
-            >
+            <button type="submit" className={styles.button}>
                 Log In
             </button>
         </form>
