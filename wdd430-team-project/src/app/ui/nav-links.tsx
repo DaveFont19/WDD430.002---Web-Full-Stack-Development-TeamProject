@@ -2,8 +2,10 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useSession } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 import styles from './nav.module.css'
+import LogoutButton from './logout-button'
+import { symlink } from 'fs'
 
 export default function NavLinks() {
 	const pathname = usePathname() as string
@@ -34,12 +36,17 @@ export default function NavLinks() {
 				)}
 
 				{isLoggedIn && (
-					<Link
-						href="/profile"
-						className={styles.link}
-					>
-						Profile
-					</Link>
+					<>
+						<Link
+							href="/profile"
+							className={styles.link}
+						>
+							Profile
+						</Link>
+
+						<LogoutButton className={styles.link} />
+
+					</>
 				)}
 
 				<Link
