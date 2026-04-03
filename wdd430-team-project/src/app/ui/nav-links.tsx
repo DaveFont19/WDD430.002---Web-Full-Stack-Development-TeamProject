@@ -2,12 +2,16 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useSession, signOut } from 'next-auth/react'
 import styles from './nav.module.css'
+import LogoutButton from './logout-button'
+import { symlink } from 'fs'
 
 export default function NavLinks() {
 	const pathname = usePathname() as string
+	const { data: session, status } = useSession()
 
-	const onLoginPage = pathname === '/login'
+	const isLoggedIn = status === 'authenticated'
 
 	return (
 		<nav className={styles.nav}>
@@ -22,9 +26,7 @@ export default function NavLinks() {
 
 			{/* Right side */}
 			<div className={styles.navRight}>
-				{/* Will update tot {!User} when login user logic exists. Right now shows login link on every page except when
-				you are on the login page */}
-				{!onLoginPage && (
+				{!isLoggedIn && (
 					<Link
 						href="/login"
 						className={styles.link}
@@ -33,14 +35,18 @@ export default function NavLinks() {
 					</Link>
 				)}
 
-				{/* Will update to user when login user login exists */}
-				{onLoginPage && (
-					<Link
-						href="/profile"
-						className={styles.link}
-					>
-						Profile
-					</Link>
+				{isLoggedIn && (
+					<>
+						<Link
+							href="/profile"
+							className={styles.link}
+						>
+							Profile
+						</Link>
+
+						<LogoutButton className={styles.link} />
+
+					</>
 				)}
 
 				<Link
