@@ -18,6 +18,18 @@
     gap: 1rem;
 }
 
+.link {
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+    cursor: pointer;
+
+    /*Clean up button*/
+    background: none;
+    border: none;
+    padding: 0;
+}
+
 .link:hover {
     text-decoration: underline;
 }
