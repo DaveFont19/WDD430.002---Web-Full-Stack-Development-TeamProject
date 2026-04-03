@@ -1,18 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import "@/app/globals.css";
-import "@/app/ui/featured-products.css";
-import { devListProducts } from "@/app/query/route";
 
-// foreach item create Link
+import { devListProducts } from "../query/route";
 
-export default async function FeatureProducts() {
-  // Get products from database
+const products = await devListProducts();
 
-  // TEST: This is sample data that will need to be fetched from the database
-  const products = await devListProducts();
-
-  return (
+export default async function Table() {
+	return (
     <div className="bounding-box">
       <ul id="featured-product-list">
         {products.map((product) => {

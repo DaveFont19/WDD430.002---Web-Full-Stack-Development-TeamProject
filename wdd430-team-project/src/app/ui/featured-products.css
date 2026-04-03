@@ -17,3 +17,29 @@
 	font-size: larger;
 	font-weight: bold;
 }
+
+/* Products Search */
+.search-bar {
+	position: relative;
+	display: flex;
+}
+
+.search-bar label {
+	visibility: hidden;
+}
+
+.search-bar input {
+	display: block;
+	width: 100%;
+	border: 1px solid gray;
+	border-radius: 10px;
+	height: 1.5rem;
+}
+
+.search-bar .magnifying-glass-icon {
+	position: absolute;
+	height: 1.25rem;
+	width: 1.25rem;
+
+
+}
