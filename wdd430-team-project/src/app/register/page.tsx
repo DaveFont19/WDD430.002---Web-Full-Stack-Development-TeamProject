@@ -1,6 +1,6 @@
-import LoginForm from "../ui/login-form";
 import { Suspense } from 'react';
 import { Metadata } from 'next';
+import RegisterForm from "../ui/register-form";
 
 export const metadata: Metadata = {
     title: 'Login',
@@ -13,7 +13,7 @@ export default function LoginPage() {
                 <div>
                 </div>
                 <Suspense>
-                    <LoginForm />
+                    <RegisterForm />
                 </Suspense>
             </div>
         </main>

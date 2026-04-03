@@ -1,12 +1,16 @@
+import Image from "next/image";
+import { ptSans } from "../ui/fonts";
+import ProductList from "./product-list";
+
 export default function Page() {
     return (
-        <div >
-            <div id="Hero">
-                <p>Put Hero Here</p>
+        <div className={ptSans.className} >
+            <div id="heading-products">
+                <h2>Cart</h2>
+                <h3>Price</h3>
+                <h3>Quantity</h3>
             </div>
-            <div>
-                <p>Cart page</p>
-            </div>
+            <ProductList />
         </div>
     );
 }
