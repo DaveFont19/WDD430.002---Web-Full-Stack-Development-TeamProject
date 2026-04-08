@@ -17,7 +17,7 @@ async function createUser(name: string, email: string, password: string, type: s
 
     const data = await sql`
     INSERT INTO users (name, email, password, type)
-    VALUES (${name}, ${email}, ${hashedPassword}, ${type})
+    VALUES (${name}, ${email}, ${hashedPassword}, ${type.toLowerCase()})
     RETURNING *;
   `;
 
@@ -46,7 +46,15 @@ export async function POST(req: Request) {
 
         const newUser = await createUser(name, email, password, type);
         return Response.json(newUser, { status: 201 });
-    } catch (error) {
-        return Response.json({ error }, { status: 500 });
+    } catch (error: any) {
+        //error code 23505 is for duplicate emails
+        if (error.code === "23505") {
+            return Response.json(
+                { error: "Email already exists. Please use a different email." },
+                { status: 409 }
+            );
+        }
+
+        return Response.json({ error: "Server error" }, { status: 500 });
     }
 }
