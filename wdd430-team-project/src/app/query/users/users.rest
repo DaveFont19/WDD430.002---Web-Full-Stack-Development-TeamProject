@@ -1,0 +1,45 @@
+### Get all users
+GET http://localhost:3000/query/users
+Accept: application/json
+
+
+### Create a new user
+POST http://localhost:3000/query/users
+Content-Type: application/json
+
+{
+  "name": "Test name",
+  "email": "test@test.com",
+  "password": "supersecret123",
+  "type": "customer"
+}
+
+
+### Get a single user by ID
+GET http://localhost:3000/query/users/6fb299a9-2373-4e6c-a495-c080f3f55ccf
+Accept: application/json
+
+# Replace {{userId}} with a real UUID
+# Example:
+# GET http://localhost:3000/query/users/7c1f3c3e-8c2a-4b1d-9f3a-123456789abc
+
+
+### Update a user
+PUT http://localhost:3000/query/users/6fb299a9-2373-4e6c-a495-c080f3f55ccf
+Content-Type: application/json
+
+{
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "password": "newpassword",
+  "type": "admin"
+}
+
+# Replace {{userId}} with a real UUID
+
+
+### Delete a user
+DELETE http://localhost:3000/query/users/f43994c7-c215-4fb5-8c40-bb996b039ddf
+Accept: application/json
+
+# Replace {{userId}} with a real UUID

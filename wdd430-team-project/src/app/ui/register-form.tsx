@@ -4,12 +4,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./form.module.css";
 import Link from "next/link";
+import { symlink } from "fs";
 
 export default function RegisterForm() {
     const router = useRouter();
+    const [name, setName] = useState("")
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [type, setType] = useState("customer")
     const [error, setError] = useState("");
 
     async function handleSubmit(e: React.FormEvent) {
@@ -23,19 +26,27 @@ export default function RegisterForm() {
 
         //place holder information to push to the database in the future
         try {
-            const res = await fetch("/api/register", {
+            const res = await fetch("/query/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ name, email, password, type, }),
             });
 
             if (!res.ok) {
                 const data = await res.json();
                 setError(data.error || "Registration failed");
+                setPassword("");
+                setConfirmPassword("");
+                setType("customer");
+
                 return;
             }
 
+            setPassword("");
+            setConfirmPassword("");
+            setType("customer");
             router.push("/login");
+
         } catch (err) {
             setError("Something went wrong. Please try again.");
         }
@@ -44,6 +55,18 @@ export default function RegisterForm() {
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
             {error && <p className={styles.error}>{error}</p>}
+
+            <div className={styles.field}>
+                <label htmlFor="name" className={styles.label}>
+                    Name</label>
+                <input
+                    type="text"
+                    className={styles.input}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                />
+            </div>
 
             <div className={styles.field}>
                 <label htmlFor="email" className={styles.label}>
@@ -85,6 +108,16 @@ export default function RegisterForm() {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
                 />
+            </div>
+
+            <div className={styles.field}>
+                <label className={styles.label}>
+                    Account Type
+                </label>
+                <select className={styles.input} value={type} onChange={(e) => setType(e.target.value)}>
+                    <option value="customer">Customer</option>
+                    <option value="seller">Seller</option>
+                </select>
             </div>
 
             <button type="submit" className={styles.button}>
