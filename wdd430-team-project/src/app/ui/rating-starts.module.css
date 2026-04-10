@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    gap: 4px;
+}
+
+.star {
+    font-size: 20px;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: transform 0.1s ease, color 0.2s ease;
+}
+
+.filled {
+    color: #f59e0b;
+}
+
+.star:hover {
+    transform: scale(1.2);
+}

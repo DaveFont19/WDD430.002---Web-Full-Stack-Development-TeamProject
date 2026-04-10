@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import postgres from 'postgres';
-import { users, products, categories, carts } from '../lib/placeholder-data';
+import { users, products, categories, carts, reviews } from '../lib/placeholder-data';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
@@ -92,12 +92,35 @@ async function seedCarts() {
   }
 }
 
+async function seedReviews() {
+  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  await sql`
+    CREATE TABLE IF NOT EXISTS reviews (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      userId UUID REFERENCES users(id),
+      productId UUID REFERENCES products(id),
+      rating INTEGER NOT NULL,
+      comment TEXT,
+      createdAt TIMESTAMP DEFAULT NOW()
+    );
+  `;
+  
+  for (const review of reviews) {
+    await sql`
+      INSERT INTO reviews (id, userId, productId, rating, comment)
+      VALUES (${review.id}, ${review.userId}, ${review.productId}, ${review.rating}, ${review.comment})
+      ON CONFLICT DO NOTHING;
+    `;
+  }
+}
+
 
 export async function GET() {
     try {
         await seedUsers();
         await seedCategories();
         await seedProducts();
+        await seedReviews();
         await seedCarts();
 
         return Response.json({ message: 'Database seeded successfully' });

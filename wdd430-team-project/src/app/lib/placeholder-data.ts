@@ -505,4 +505,22 @@ const carts = [
     }
 ];
 
-export { users, products, categories, carts };
+const reviews = [
+    {
+        id: '80000001-0000-0000-0000-000000000001',
+        userId: '22222222-2222-2222-2222-222222222222',
+        productId: '10000001-0000-0000-0000-000000000001',
+        rating: 5,
+        comment: 'Great product!'
+    },
+    {
+        id: '80000002-0000-0000-0000-000000000002',
+        userId: '44444444-4444-4444-4444-444444444444',
+        productId: '10000002-0000-0000-0000-000000000002',
+        rating: 4,
+        comment: 'Good value for money.'
+    }
+];
+
+
+export { users, products, categories, carts, reviews };
