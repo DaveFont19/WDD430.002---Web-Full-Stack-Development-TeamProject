@@ -56,6 +56,7 @@ export async function PATCH(request: Request) {
   try {
     const { productId, quantity } = await request.json();
     const userId = "22222222-2222-2222-2222-222222222222";
+    
     await sql`
       UPDATE carts
       SET quantity = ${quantity}
