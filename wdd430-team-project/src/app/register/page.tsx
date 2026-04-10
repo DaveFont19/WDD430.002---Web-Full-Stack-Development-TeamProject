@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     title: 'Login',
 };
 
-export default function LoginPage() {
+export default function RegisterPage() {
     return (
         <main className="flex items-center justify-center md:h-screen">
             <div>
