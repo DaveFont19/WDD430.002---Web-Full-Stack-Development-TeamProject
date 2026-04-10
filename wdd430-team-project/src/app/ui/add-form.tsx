@@ -70,7 +70,7 @@ export default function AddProductForm() {
                 </small>
             </div>
 
-            <div style={{ display: 'flex', gap: '1rem' }}>
+            <div style={{ display: 'grid', gap: '1rem' }}>
                 <div className={styles.field} style={{ flex: 1 }}>
                     <label htmlFor="price" className={styles.label}>Price (USD)</label>
                     <input
