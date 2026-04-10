@@ -2,7 +2,19 @@ import Image from "next/image";
 import { ptSans } from "../ui/fonts";
 import ProductList from "./product-list";
 
-export default function Page() {
+async function getCartProducts() {
+  try {
+    const res = await fetch("http://localhost:3000/api/cart", {
+      cache: "no-store",
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (error) {
+    return null;
+  }
+}
+
+export default async function Page() {
     return (
         <div className={ptSans.className} >
             <div id="heading-products">
@@ -10,7 +22,7 @@ export default function Page() {
                 <h3>Price</h3>
                 <h3>Quantity</h3>
             </div>
-            <ProductList />
+            <ProductList products={await getCartProducts()} />
         </div>
     );
 }
