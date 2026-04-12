@@ -91,7 +91,7 @@ export async function listFilteredProducts(
 	    p.description description,
 	    p.image as image,
 	    p.thumbnail as thumbnail,
-	    p.priceincents as priceInCents,
+	    p.priceincents as "priceInCents",
 	    c.name as category_name,
 	    u.name as user_name,
 	    p.rating as rating
