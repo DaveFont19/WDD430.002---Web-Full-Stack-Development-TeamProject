@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { devListProducts } from "../../query/route";
+import { listFilteredProducts } from "../../query/route";
 
 export default async function Table(
     {
@@ -11,7 +11,7 @@ export default async function Table(
         query: string;
         currentPage: number;
     }) {
-    const products = await devListProducts();
+    const products = await listFilteredProducts(query, currentPage);
     //const products = await fetchFilteredProducts(query, currentPage);
 
     return (

@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -152,3 +150,7 @@ a {
 #total-section button:hover {
   background-color: #ffb800;
 }
+
+/* .pagination-arrow svg{
+  height: 1rem;
+} */

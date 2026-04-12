@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import "@/app/ui/products/featured-products.css";
-import { devListProducts } from "@/app/query/route";
+import { listFeaturedProducts } from "@/app/query/route";
 
 // foreach item create Link
 
@@ -9,7 +9,7 @@ export default async function FeatureProducts() {
   // Get products from database
 
   // TEST: This is sample data that will need to be fetched from the database
-  const products = await devListProducts();
+  const products = await listFeaturedProducts();
 
   return (
     <div className="bounding-box">
