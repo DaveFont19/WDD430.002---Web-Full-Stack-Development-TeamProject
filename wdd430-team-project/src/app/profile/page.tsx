@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/app/ui/profile.module.css";
@@ -23,9 +22,7 @@ interface ArtisanProfile {
     products: Product[];
 }
 
-
 async function getArtisanData(): Promise<ArtisanProfile> {
-
     return {
         name: "Martin Artisan",
         bio: "Artizan artizan artizan, from Uruguay, specialist in wood",
@@ -36,21 +33,21 @@ async function getArtisanData(): Promise<ArtisanProfile> {
         products: [
             {
                 id: "1",
-                name: "Hand-Thrown Ceramic Mug",
+                name: "Ceramic Mug",
                 price: 25.00,
                 stock: 15,
                 thumbnail: "/product_thumbnail_placeholder.svg"
             },
             {
                 id: "2",
-                name: "Reclaimed Wood Cutting Board",
+                name: "Hand made little table",
                 price: 45.00,
                 stock: 8,
                 thumbnail: "/product_thumbnail_placeholder.svg"
             },
             {
                 id: "3",
-                name: "Hand-Stitched Leather Journal",
+                name: "Bedside lamp",
                 price: 35.00,
                 stock: 5,
                 thumbnail: "/product_thumbnail_placeholder.svg"
@@ -64,7 +61,6 @@ export default async function ProfilePage() {
 
     return (
         <div className={styles.profileWrapper}>
-
             <section className={styles.headerContainer}>
                 <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
                     <Image
@@ -84,7 +80,6 @@ export default async function ProfilePage() {
                     </div>
                 </div>
 
-
                 <Link
                     href="/profile/add-product"
                     className="featured-product-link"
@@ -101,27 +96,30 @@ export default async function ProfilePage() {
 
             <hr style={{ border: '0', borderTop: '1px solid #eee', margin: '40px 0' }} />
 
-
             <h2 style={{ marginBottom: '24px' }}>My Active Products</h2>
 
-            <ul id="featured-product-list">
+            <ul id="featured-product-list" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
                 {profile.products.map((product) => (
+                    <li key={product.id} className="featured-product-link" style={{ listStyle: 'none', width: '250px' }}>
+                        
+                        <Link 
+                            href={`/products/${product.id}`} 
+                            style={{ textDecoration: 'none', color: 'inherit' }}
+                        >
+                            <Image
+                                src={product.thumbnail}
+                                alt={product.name}
+                                width={250}
+                                height={250}
+                                className="featured-product-image"
+                                style={{ borderRadius: '8px', cursor: 'pointer' }}
+                            />
+                            <p style={{ fontWeight: 'bold', marginTop: '10px' }}>{product.name}</p>
+                        </Link>
 
-                    
-
-                    <li key={product.id} className="featured-product-link" style={{ listStyle: 'none' }}>
-                        <Image
-                            src={product.thumbnail}
-                            alt={product.name}
-                            width={250}
-                            height={250}
-                            className="featured-product-image"
-                        />
-                        <p>{product.name}</p>
-                        <p style={{ fontSize: '1.1rem', marginTop: '5px' }}>
-                            ${(product.price / 100).toFixed(2)}
+                        <p style={{ fontSize: '1.1rem', marginTop: '5px', color: 'hsl(215, 29%, 19%)' }}>
+                            ${product.price.toFixed(2)}
                         </p>
-
 
                         <div style={{ display: 'flex', gap: '8px', marginTop: '15px', width: '100%' }}>
                             <Link
@@ -147,4 +145,5 @@ export default async function ProfilePage() {
             </ul>
         </div>
     );
+    
 }
