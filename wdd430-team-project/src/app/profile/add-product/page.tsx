@@ -1,19 +1,17 @@
+import AddProductForm from "@/app/ui/add-form";
 import { Suspense } from 'react';
 import { Metadata } from 'next';
-import RegisterForm from "../ui/register-form";
 
 export const metadata: Metadata = {
-    title: 'Login',
+    title: 'Add New Product',
 };
 
-export default function RegisterPage() {
+export default function AddProductPage() {
     return (
         <main className="flex items-center justify-center md:h-screen">
-            <div>
-                <div>
-                </div>
-                <Suspense>
-                    <RegisterForm />
+            <div className="w-full">
+                <Suspense fallback={<p>Loading...</p>}>
+                    <AddProductForm />
                 </Suspense>
             </div>
         </main>

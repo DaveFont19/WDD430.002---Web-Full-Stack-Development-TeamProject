@@ -1,8 +1,9 @@
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "@/app/ui/profile.module.css";
-import "@/app/ui/featured-products.css"; // Importamos el CSS de tu compañero
-
+import "@/app/ui/products/featured-products.css";
+import DeleteButton from "@/app/ui/delete-button";
 
 interface Product {
     id: string;
@@ -24,7 +25,7 @@ interface ArtisanProfile {
 
 
 async function getArtisanData(): Promise<ArtisanProfile> {
-    
+
     return {
         name: "Martin Artisan",
         bio: "Artizan artizan artizan, from Uruguay, specialist in wood",
@@ -63,7 +64,7 @@ export default async function ProfilePage() {
 
     return (
         <div className={styles.profileWrapper}>
-            
+
             <section className={styles.headerContainer}>
                 <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
                     <Image
@@ -83,19 +84,31 @@ export default async function ProfilePage() {
                     </div>
                 </div>
 
-                
-                <button className="featured-product-link" style={{ cursor: 'pointer', fontWeight: 'bold' }}>
+
+                <Link
+                    href="/profile/add-product"
+                    className="featured-product-link"
+                    style={{
+                        textDecoration: 'none',
+                        textAlign: 'center',
+                        fontWeight: 'bold',
+                        display: 'inline-block'
+                    }}
+                >
                     Add New Product
-                </button>
+                </Link>
             </section>
 
             <hr style={{ border: '0', borderTop: '1px solid #eee', margin: '40px 0' }} />
 
-            
+
             <h2 style={{ marginBottom: '24px' }}>My Active Products</h2>
 
             <ul id="featured-product-list">
                 {profile.products.map((product) => (
+
+                    
+
                     <li key={product.id} className="featured-product-link" style={{ listStyle: 'none' }}>
                         <Image
                             src={product.thumbnail}
@@ -109,14 +122,25 @@ export default async function ProfilePage() {
                             ${(product.price / 100).toFixed(2)}
                         </p>
 
-                        
+
                         <div style={{ display: 'flex', gap: '8px', marginTop: '15px', width: '100%' }}>
-                            <button style={{ flex: 1, padding: '8px', cursor: 'pointer', borderRadius: '4px', border: '1px solid #232f40' }}>
+                            <Link
+                                href={`/profile/edit-product/${product.id}`}
+                                style={{
+                                    flex: 1,
+                                    padding: '8px',
+                                    cursor: 'pointer',
+                                    borderRadius: '4px',
+                                    border: '1px solid #232f40',
+                                    textAlign: 'center',
+                                    textDecoration: 'none',
+                                    color: 'inherit',
+                                    fontSize: '0.9rem'
+                                }}
+                            >
                                 Edit
-                            </button>
-                            <button style={{ flex: 1, padding: '8px', cursor: 'pointer', borderRadius: '4px', border: '1px solid #ff4444', color: '#ff4444' }}>
-                                Delete
-                            </button>
+                            </Link>
+                            <DeleteButton id={product.id} name={product.name} />
                         </div>
                     </li>
                 ))}

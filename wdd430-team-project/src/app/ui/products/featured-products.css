@@ -1,0 +1,47 @@
+#featured-product-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 1rem;
+}
+
+.featured-product-link {
+	background-color: #50bac8;
+	padding: 1rem;
+	border: 2px solid #232f40;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.featured-product-link p {
+	text-align: center;
+	font-size: larger;
+	font-weight: bold;
+}
+
+/* Products Search */
+.search-bar {
+	position: relative;
+	display: flex;
+}
+
+.search-bar label {
+	visibility: hidden;
+}
+
+.search-bar input {
+	display: block;
+	width: 100%;
+	border: 1px solid gray;
+	border-radius: 10px;
+	height: 1.5rem;
+}
+
+.search-bar .magnifying-glass-icon {
+	position: absolute;
+	height: 1.25rem;
+	width: 1.25rem;
+
+
+}
