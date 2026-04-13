@@ -1,5 +1,5 @@
 import Image from "next/image";
-import FeatureProducts from "./ui/featured-products";
+import FeatureProducts from "./ui/products/featured-products";
 
 export default function Home() {
   return (

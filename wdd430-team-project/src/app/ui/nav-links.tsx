@@ -50,6 +50,10 @@ export default function NavLinks() {
 				)}
 
 				<Link
+					href="/products"
+					className={styles.link}
+					>Products</Link>
+				<Link
 					href="/cart"
 					className={styles.link}
 				>

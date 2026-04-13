@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/app/ui/profile.module.css";
-import "@/app/ui/featured-products.css";
+import "@/app/ui/products/featured-products.css";
 import DeleteButton from "@/app/ui/delete-button";
 
 interface Product {
