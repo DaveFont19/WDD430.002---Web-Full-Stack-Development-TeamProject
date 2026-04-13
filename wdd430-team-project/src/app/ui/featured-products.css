@@ -8,12 +8,22 @@
 .featured-product-link {
 	background-color: #50bac8;
 	padding: 1rem;
-	border: 2px solid #232f40;
+	border: 1px solid #232f40;
 	border-radius: 10px;
+	font-size: 1em;
 }
+
+.featured-product-link:hover {
+	background-color: #d9b62b;
+}
+
+
+
+
 
 .featured-product-link p {
 	text-align: center;
 	font-size: larger;
 	font-weight: bold;
 }
+
