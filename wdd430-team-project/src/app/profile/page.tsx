@@ -145,4 +145,5 @@ export default async function ProfilePage() {
             </ul>
         </div>
     );
+    
 }
