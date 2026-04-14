@@ -71,7 +71,7 @@ export async function POST(req: Request) {
                 description,
                 image,
                 thumbnail,
-                priceInCents,
+                priceincents,
                 category,
                 seller,
                 rating
