@@ -1,3 +1,4 @@
+/*
 import postgres from 'postgres';
 import { z } from "zod";
 
@@ -99,3 +100,4 @@ export async function POST(req: Request) {
         );
     }
 }
+    */
