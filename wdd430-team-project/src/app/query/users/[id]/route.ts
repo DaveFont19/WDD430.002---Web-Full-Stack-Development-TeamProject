@@ -1,4 +1,3 @@
-/*
 import postgres from 'postgres';
 import bcrypt from 'bcryptjs';
 
@@ -86,4 +85,3 @@ export async function DELETE(
         return Response.json({ error }, { status: 500 });
     }
 }
-    */
