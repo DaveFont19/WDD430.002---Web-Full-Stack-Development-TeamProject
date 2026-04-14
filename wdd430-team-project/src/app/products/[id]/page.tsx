@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { lora } from "@/app/ui/fonts";
 import styles from "@/app/ui/profile.module.css";
 import Link from "next/link";
+import Reviews from "@/app/reviews/page";
 
 // Just simulation
 async function getProduct(id: string) {
@@ -185,7 +186,7 @@ export default async function ProductPage({
           color: '#888',
           border: '1px dashed #ccc'
         }}>
-          Ratings and comments section here
+          <Reviews></Reviews>
         </div>
       </section>
     </div>
