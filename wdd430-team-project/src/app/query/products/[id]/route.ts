@@ -188,6 +188,7 @@ const UpdateProductSchema = z.object({
     rating: z.coerce.number().optional()
 });
 
+/*
 export async function PATCH(
     req: Request,
     context: { params: Promise<{ id: string }> }
@@ -255,7 +256,7 @@ export async function PATCH(
         );
     }
 }
-
+*/
 
 export async function DELETE(
     req: Request,
