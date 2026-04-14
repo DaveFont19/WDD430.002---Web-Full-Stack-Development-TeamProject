@@ -1,0 +1,51 @@
+### Get all products
+GET http://localhost:3000/query/products
+Accept: application/json
+
+### Create a new product
+POST http://localhost:3000/query/products
+Content-Type: application/json
+
+{
+  "name": "Test Product",
+  "description": "A sample product created for testing.",
+  "image": "https://example.com/image.jpg",
+  "thumbnail": "https://example.com/thumb.jpg",
+  "priceincents": 1999,
+  "category": "14141414-1414-1414-1414-141414141414",
+  "seller": "6293ea70-4f31-4f11-adbc-8382feb9f955",
+  "rating": 5
+}
+
+### Get product by ID
+GET http://localhost:3000/query/products/a2c8512d-165a-4e71-8d14-76d43c6d845e
+
+### Update product price
+PATCH http://localhost:3000/query/products/a2c8512d-165a-4e71-8d14-76d43c6d845e
+Content-Type: application/json
+
+{
+  "priceincents": 2499
+}
+
+### Update name and rating
+PATCH http://localhost:3000/query/products/a2c8512d-165a-4e71-8d14-76d43c6d845e
+Content-Type: application/json
+
+{
+  "name": "Updated Product Name",
+  "rating": 4
+}
+
+### Update description and thumbnail
+PATCH http://localhost:3000/query/products/a2c8512d-165a-4e71-8d14-76d43c6d845e
+Content-Type: application/json
+
+{
+  "description": "New updated description.",
+  "thumbnail": "https://example.com/new-thumb.jpg"
+}
+
+
+### Delete product by ID
+DELETE http://localhost:3000/query/products/a2c8512d-165a-4e71-8d14-76d43c6d845e
