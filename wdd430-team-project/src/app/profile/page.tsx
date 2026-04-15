@@ -27,7 +27,15 @@ interface ArtisanProfile {
 async function getArtisanData(): Promise<ArtisanProfile> {
 
     const product_list = await getProductByUserIdForProfile("55555555-5555-5555-5555-555555555555");
-    console.log(product_list);
+    
+    const products: Product[] = product_list.map((item) => ({
+        id: item.id as string,
+        name: item.name as string,
+        price: Number(item.price),
+        stock: Number(item.stock),
+        thumbnail: item.thumbnail as string,
+    }));
+    
     return {
         name: "Daniel Wilson",
         bio: "Artizan artizan artizan, from Uruguay, specialist in wood",
@@ -35,7 +43,7 @@ async function getArtisanData(): Promise<ArtisanProfile> {
         phone: "1555 012-3456",
         location: "Rivera, Uruguay",
         profilePicture: "/sellers/profile-placeholder.svg",
-        products: product_list
+        products: products
     };
 }
 
