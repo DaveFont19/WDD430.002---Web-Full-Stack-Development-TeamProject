@@ -9,6 +9,7 @@ export default function WishlistRemoveButton({
 }: {
   userId: string | null;
   productId: string;
+  
 }) {
   const router = useRouter();
 
