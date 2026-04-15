@@ -4,41 +4,7 @@ import { lora } from "@/app/ui/fonts";
 import styles from "@/app/ui/profile.module.css";
 import Link from "next/link";
 import Reviews from "@/app/reviews/page";
-
-// Just simulation
-async function getProduct(id: string) {
-  const products = [
-    {
-      id: "1",
-      name: "Ceramic Mug",
-      seller: "Martin Sander",
-      price: 25.00,
-      stock: 15,
-      description: "A beautiful handmade mugA beautiful handmade mug A beautiful handmade mug  A beautiful handmade mug A beautiful handmade mug A beautiful handmade mug A beautiful handmade mug A beautiful handmade mug A beautiful handmade mug",
-      thumbnail: "/product_thumbnail_placeholder.svg"
-    },
-    {
-      id: "2",
-      name: "Hand made little table",
-      seller: "Martin Sander",
-      price: 45.00,
-      stock: 8,
-      description: "Hand made little table Hand made little tableHand made little tableHand made little tableHand made little tableHand made little tableHand made little tableHand made little tableHand made little tableHand made little tableHand made little tableHand made little table",
-      thumbnail: "/product_thumbnail_placeholder.svg"
-    },
-    {
-      id: "3",
-      name: "Bedside lamp",
-      seller: "Martin Sander",
-      price: 35.00,
-      stock: 5,
-      description: "Beautiful handmade bedside lamp Beautiful handmade bedside lamp Beautiful handmade bedside lamp Beautiful handmade bedside lamp Beautiful handmade bedside lamp Beautiful handmade bedside lamp Beautiful handmade bedside lamp Beautiful handmade bedside lamp Beautiful handmade bedside lamp Beautiful handmade bedside lamp",
-      thumbnail: "/product_thumbnail_placeholder.svg"
-    },
-  ];
-
-  return products.find(p => p.id === id);
-}
+import { getProductById } from "@/app/query/route";
 
 export default async function ProductPage({
   params
@@ -47,7 +13,7 @@ export default async function ProductPage({
 }) {
 
   const resolvedParams = await params;
-  const product = await getProduct(resolvedParams.id);
+  const product = await getProductById(resolvedParams.id);
 
   if (!product) {
     notFound();
@@ -107,12 +73,13 @@ export default async function ProductPage({
             color: 'hsl(215, 29%, 19%)',
             marginBottom: '1rem'
           }}>
-            ${product.price.toFixed(2)}
+            {(product.priceInCents / 100).toLocaleString("en-US", { style: "currency", currency: "USD" })}
           </div>
 
           <p style={{
             padding: '4px 8px',
             backgroundColor: '#f0f0f0',
+            color: "#000",
             display: 'inline-block',
             borderRadius: '4px',
             fontSize: '0.85rem',
