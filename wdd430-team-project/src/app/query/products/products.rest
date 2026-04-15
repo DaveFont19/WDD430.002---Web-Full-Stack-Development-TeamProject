@@ -48,4 +48,4 @@ Content-Type: application/json
 
 
 ### Delete product by ID
-DELETE http://localhost:3000/query/products/2cfc3bb1-49cf-4860-9872-fe1a8ecc5a17
+DELETE http://localhost:3000/query/products/7a7d9da4-c568-428d-9fc9-943ef44fe346

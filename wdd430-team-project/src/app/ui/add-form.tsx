@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "./form.module.css"; 
+import styles from "./form.module.css";
 import Link from 'next/link';
 
 export default function AddProductForm() {
@@ -16,26 +16,50 @@ export default function AddProductForm() {
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
         setError("");
-        
+
         if (description.length < 20) {
             setError("The description must be at least 20 characters long.");
             return;
         }
 
-        console.log({ 
-            name, 
-            description, 
-            price: Number(price), 
-            stock: Number(stock) 
-        });
+        const priceincents = Math.round(Number(price) * 100);
 
-        router.push("/profile");
+        const body = {
+            name,
+            description,
+            priceincents,
+            // optional fields
+            image: undefined,
+            thumbnail: undefined,
+            category: undefined,
+            seller: undefined,
+            rating: undefined
+        };
+
+        try {
+            const res = await fetch("/query/products", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+
+            if (!res.ok) {
+                const data = await res.json();
+                setError(data.error || "Failed to create product");
+                return;
+            }
+
+            router.push("/profile");
+        } catch (err) {
+            setError("Something went wrong while saving the product");
+            console.error(err);
+        }
     }
 
     return (
         <form onSubmit={handleSubmit} className={styles.form} style={{ maxWidth: '450px' }}>
             <h2 style={{ marginBottom: '1rem', textAlign: 'center' }}>Add New Product</h2>
-            
+
             {error && <p className={styles.error}>{error}</p>}
 
             <div className={styles.field}>
@@ -61,8 +85,8 @@ export default function AddProductForm() {
                     required
                     placeholder="add a description of your product"
                 />
-                <small style={{ 
-                    fontSize: '0.75rem', 
+                <small style={{
+                    fontSize: '0.75rem',
                     color: description.length < 20 ? '#d32f2f' : '#2e7d32',
                     textAlign: 'right'
                 }}>
