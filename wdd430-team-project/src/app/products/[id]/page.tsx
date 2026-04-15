@@ -108,7 +108,7 @@ export default async function ProductPage({
               display: 'inline-block',
               textAlign: 'center',
               textDecoration: 'none',
-              backgroundColor: '#50bac8',
+              backgroundColor: '#ffce12',
               borderRadius: '10px',
               marginRight: '10px',
               fontFamily: 'PT Sans, PT Sans Fallback',
@@ -153,7 +153,7 @@ export default async function ProductPage({
           color: '#888',
           border: '1px dashed #ccc'
         }}>
-          <Reviews></Reviews>
+          <Reviews/>
         </div>
       </section>
     </div>

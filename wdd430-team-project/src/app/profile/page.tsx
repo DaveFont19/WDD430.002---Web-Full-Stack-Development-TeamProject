@@ -100,7 +100,7 @@ export default async function ProfilePage() {
 
             <ul id="featured-product-list" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: 0 }}>
                 {profile.products.map((product) => (
-                    <li key={product.id} className="featured-product-link" style={{ listStyle: 'none', width: '250px' }}>
+                    <li key={product.id} className="featured-product-link">
                         
                         <Link 
                             href={`/products/${product.id}`} 

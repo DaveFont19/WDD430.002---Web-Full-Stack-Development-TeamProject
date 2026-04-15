@@ -4,6 +4,7 @@ import Search from "@/app/ui/products/search";
 import Table from "@/app/ui/products/table";
 import Pagination from "@/app/ui/products/pagination";
 
+
 export default async function Page(props: {
   searchParams?: Promise<{
     query?: string;
@@ -16,13 +17,15 @@ export default async function Page(props: {
   const totalPages = await fetchProductSearchPages(query);
 
   return (
-    <div className="w-full">
-      <div id="product-search">
-        <Search placeholder="Search products..." />
-      </div>
-      <Table query={query} currentPage={currentPage} />
-      <div className="mt-5 flex w-full justify-center">
-        <Pagination totalPages={totalPages}/>
+    <div className="globalWrapper">
+      <div className="w-full">
+        <div id="product-search">
+          <Search placeholder="Search products..." />
+        </div>
+        <Table query={query} currentPage={currentPage} />
+        <div className="mt-5 flex w-full justify-center">
+          <Pagination totalPages={totalPages} />
+        </div>
       </div>
     </div>
   );

@@ -20,7 +20,9 @@ export default function Home() {
           alt="Close-up of a local artisan's hands carefully crafting a unique handmade product in a traditional workshop setting."
         />
       </div>
-      <FeatureProducts />
+      <div className="globalWrapper">
+        <FeatureProducts />
+      </div>
     </div>
   );
 }
