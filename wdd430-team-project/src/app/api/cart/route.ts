@@ -3,6 +3,8 @@ import postgres from "postgres";
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
+
+
 export async function GET() {
   const userId = "22222222-2222-2222-2222-222222222222";
   try {
@@ -31,10 +33,10 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST(request: Request, id: string) {
   try {
     const { productId, quantity } = await request.json();
-    const userId = "22222222-2222-2222-2222-222222222222";
+    const userId = id
     await sql`
       INSERT INTO carts (userId, productId, quantity)
       VALUES (${userId}, ${productId}, ${quantity})
@@ -56,6 +58,7 @@ export async function PATCH(request: Request) {
   try {
     const { productId, quantity } = await request.json();
     const userId = "22222222-2222-2222-2222-222222222222";
+    
     await sql`
       UPDATE carts
       SET quantity = ${quantity}

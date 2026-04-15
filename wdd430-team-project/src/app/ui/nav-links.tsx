@@ -59,6 +59,14 @@ export default function NavLinks() {
 				>
 					Cart
 				</Link>
+				{isLoggedIn && (
+					<Link
+						href="/wishlist"
+						className={styles.link}
+					>
+						Wishlist
+					</Link>
+				)}
 			</div>
 		</nav>
 	)

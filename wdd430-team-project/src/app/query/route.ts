@@ -81,27 +81,30 @@ export async function fetchProductSearchPages(query: string) {
 
 export async function listFilteredProducts(
     query: string,
-    currentPage: number
+    currentPage: number,
+    userId?: string | null
 ) {
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
     const data = await sql`
     SELECT 
       p.id as id,
-	    p.name as name,
-	    p.description description,
-	    p.image as image,
-	    p.thumbnail as thumbnail,
-	    p.priceincents as "priceInCents",
-	    c.name as category_name,
-	    u.name as user_name,
-	    p.rating as rating
+      p.name as name,
+      p.description as description,
+      p.image as image,
+      p.thumbnail as thumbnail,
+      p.priceincents as "priceInCents",
+      c.name as category_name,
+      u.name as user_name,
+      p.rating as rating,
+      CASE WHEN w.productid IS NOT NULL THEN true ELSE false END as "inWishlist"  -- 👈 nuevo
     FROM products p
     JOIN users u ON p.seller = u.id
     JOIN categories c ON p.category = c.id
+    LEFT JOIN wishlist w ON w.productid = p.id AND w.userid = ${userId ?? null}  -- 👈 nuevo
     WHERE
         p.name ILIKE ${`%${query}%`} OR
         p.description ILIKE ${`%${query}%`} OR
-        p.priceInCents::text ILIKE ${`%${query}%`} OR
+        p.priceincents::text ILIKE ${`%${query}%`} OR
         c.name ILIKE ${`%${query}%`} OR
         p.rating::text ILIKE ${`%${query}%`} OR
         u.name ILIKE ${`%${query}%`}
