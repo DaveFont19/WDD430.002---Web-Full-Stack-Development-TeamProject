@@ -1,8 +1,8 @@
 import "@/app/ui/products/featured-products.css";
 import { fetchProductSearchPages } from "@/app/query/route";
-import Search from "../ui/products/search";
-import Table from "../ui/products/table";
-import Pagination from "../ui/products/pagination";
+import Search from "@/app/ui/products/search";
+import Table from "@/app/ui/products/table";
+import Pagination from "@/app/ui/products/pagination";
 
 export default async function Page(props: {
   searchParams?: Promise<{
