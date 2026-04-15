@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "@/app/ui/profile.module.css";
 import "@/app/ui/products/featured-products.css";
 import DeleteButton from "@/app/ui/delete-button";
+import { getProductByUserIdForProfile } from "../query/route";
 
 interface Product {
     id: string;
@@ -22,37 +23,19 @@ interface ArtisanProfile {
     products: Product[];
 }
 
+
 async function getArtisanData(): Promise<ArtisanProfile> {
+
+    const product_list = await getProductByUserIdForProfile("55555555-5555-5555-5555-555555555555");
+    console.log(product_list);
     return {
-        name: "Martin Artisan",
+        name: "Daniel Wilson",
         bio: "Artizan artizan artizan, from Uruguay, specialist in wood",
-        email: "martin@email.com",
+        email: "test@test.com",
         phone: "1555 012-3456",
         location: "Rivera, Uruguay",
         profilePicture: "/sellers/profile-placeholder.svg",
-        products: [
-            {
-                id: "1",
-                name: "Ceramic Mug",
-                price: 25.00,
-                stock: 15,
-                thumbnail: "/product_thumbnail_placeholder.svg"
-            },
-            {
-                id: "2",
-                name: "Hand made little table",
-                price: 45.00,
-                stock: 8,
-                thumbnail: "/product_thumbnail_placeholder.svg"
-            },
-            {
-                id: "3",
-                name: "Bedside lamp",
-                price: 35.00,
-                stock: 5,
-                thumbnail: "/product_thumbnail_placeholder.svg"
-            },
-        ]
+        products: product_list
     };
 }
 
