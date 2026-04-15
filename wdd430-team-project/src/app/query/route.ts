@@ -140,3 +140,27 @@ export async function getProductById(
         throw new Error(`Failed to fetch product with id: ${id}`);
     }
 }
+
+export async function getProductByUserIdForProfile(
+    id: string
+) {
+    try {
+        const data = await sql`
+    SELECT 
+      p.id as id,
+	    p.name as name,
+	    (p.priceincents / 100) as "price",
+	    1 as "stock",
+	    p.thumbnail as thumbnail
+    FROM products p
+    WHERE
+        p.seller = ${`${id}`};
+  `;
+
+        return data;
+    }
+    catch (error) {
+        console.error(`Database error: ${error}`);
+        throw new Error(`Failed to fetch product with id: ${id}`);
+    }
+}
