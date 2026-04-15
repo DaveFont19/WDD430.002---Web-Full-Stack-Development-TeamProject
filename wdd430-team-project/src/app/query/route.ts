@@ -110,3 +110,33 @@ export async function listFilteredProducts(
 
     return data;
 }
+
+export async function getProductById(
+    id: string
+) {
+    try {
+        const data = await sql`
+    SELECT 
+      p.id as id,
+	    p.name as name,
+	    p.description description,
+	    p.image as image,
+	    p.thumbnail as thumbnail,
+	    p.priceincents as "priceInCents",
+	    c.name as category_name,
+	    u.name as user_name,
+	    p.rating as rating
+    FROM products p
+    JOIN users u ON p.seller = u.id
+    JOIN categories c ON p.category = c.id
+    WHERE
+        p.id = ${`${id}`};
+  `;
+
+        return data[0];
+    }
+    catch (error) {
+        console.error(`Database error: ${error}`);
+        throw new Error(`Failed to fetch product with id: ${id}`);
+    }
+}
