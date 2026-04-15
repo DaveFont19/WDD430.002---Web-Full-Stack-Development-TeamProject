@@ -5,7 +5,7 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 export async function GET(
     req: Request,
-    context: { params: Promise<{ id: string }> }
+    context: { params: { id: string } }
 ) {
     const { id } = await context.params;
 
@@ -25,7 +25,7 @@ export async function GET(
 
 export async function PUT(
     req: Request,
-    context: { params: Promise<{ id: string }> }
+    context: { params: { id: string } }
 ) {
     try {
         const { id } = await context.params;
@@ -65,7 +65,7 @@ export async function PUT(
 
 export async function DELETE(
     req: Request,
-    context: { params: Promise<{ id: string }> }
+    context: { params: { id: string } }
 ) {
     try {
         const { id } = await context.params;

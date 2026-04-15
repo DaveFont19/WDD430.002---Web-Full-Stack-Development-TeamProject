@@ -18,10 +18,10 @@ Content-Type: application/json
 }
 
 ### Get product by ID
-GET http://localhost:3000/query/products/6d269e79-d554-43fa-ad56-1787fe99ad38
+GET http://localhost:3000/query/products/2cfc3bb1-49cf-4860-9872-fe1a8ecc5a17
 
 ### Update product price
-PATCH http://localhost:3000/query/products/6d269e79-d554-43fa-ad56-1787fe99ad38
+PATCH http://localhost:3000/query/products/2cfc3bb1-49cf-4860-9872-fe1a8ecc5a17
 Content-Type: application/json
 
 {
@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 
 ### Update name and rating
-PATCH http://localhost:3000/query/products/6d269e79-d554-43fa-ad56-1787fe99ad38
+PATCH http://localhost:3000/query/products/2cfc3bb1-49cf-4860-9872-fe1a8ecc5a17
 Content-Type: application/json
 
 {
@@ -38,7 +38,7 @@ Content-Type: application/json
 }
 
 ### Update description and thumbnail
-PATCH http://localhost:3000/query/products/6d269e79-d554-43fa-ad56-1787fe99ad38
+PATCH http://localhost:3000/query/products/2cfc3bb1-49cf-4860-9872-fe1a8ecc5a17
 Content-Type: application/json
 
 {
@@ -48,4 +48,4 @@ Content-Type: application/json
 
 
 ### Delete product by ID
-DELETE http://localhost:3000/query/products/6d269e79-d554-43fa-ad56-1787fe99ad38
+DELETE http://localhost:3000/query/products/2cfc3bb1-49cf-4860-9872-fe1a8ecc5a17
