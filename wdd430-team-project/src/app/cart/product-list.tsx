@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useTransition, useEffect } from "react";
 
+
 export default function ProductList({ products: initialProducts }: { products: any[] | null }) {
   const [products, setProducts] = useState<any[]>([]);
   const [isPending, startTransition] = useTransition();
@@ -13,8 +14,8 @@ export default function ProductList({ products: initialProducts }: { products: a
     }
   }, [initialProducts]);
 
-  if (!initialProducts) return <p>Cargando...</p>;
-  if (products.length === 0) return <p>Tu carrito está vacío.</p>;
+  if (!initialProducts) return <p>Loading...</p>;
+  if (products.length === 0) return <p>Your Cart is empty.</p>;
 
   const total = products.reduce((sum, p) => sum + p.priceincents * p.quantity, 0);
 
@@ -108,7 +109,7 @@ export default function ProductList({ products: initialProducts }: { products: a
       <div id="total-section">
         <h3>Total ${(total / 100).toFixed(2)}</h3>
         <button type="button" disabled={isPending}>
-          {isPending ? "Actualizando..." : "Buy Now"}
+          {isPending ? "Updating..." : "Buy Now"}
         </button>
       </div>
     </>
