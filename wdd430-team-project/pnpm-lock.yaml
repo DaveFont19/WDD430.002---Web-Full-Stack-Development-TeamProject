@@ -47,6 +47,9 @@ importers:
       wdd430-team-project:
         specifier: 'link:'
         version: 'link:'
+      zod:
+        specifier: ^4.3.6
+        version: 4.3.6
     devDependencies:
       '@types/node':
         specifier: ^20
