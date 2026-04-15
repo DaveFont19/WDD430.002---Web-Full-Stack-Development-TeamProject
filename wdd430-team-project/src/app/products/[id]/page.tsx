@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { lora } from "@/app/ui/fonts";
 import styles from "@/app/ui/profile.module.css";
 import Link from "next/link";
-import Reviews from "@/app/reviews/page";
+import ReviewList from "@/app/ui/review-list";
+import ReviewForm from "@/app/ui/review-form";
+import RatingStars from "@/app/ui/rating-stars";
 import { getProductById } from "@/app/query/route";
 
 export default async function ProductPage({
@@ -18,6 +20,7 @@ export default async function ProductPage({
   if (!product) {
     notFound();
   }
+  const userId = '22222222-2222-2222-2222-222222222222';
 
   return (
     <div className={styles.profileWrapper} style={{ marginTop: '2rem' }}>
@@ -66,6 +69,13 @@ export default async function ProductPage({
           <p style={{ color: '#555', marginBottom: '1rem' }}>
             Seller: <strong>{product.seller}</strong>
           </p>
+
+          <div style={{ marginBottom: '1rem' }}>
+            <RatingStars value={Math.round(product.rating || 0)} />
+            <p style={{ fontSize: '0.9rem', color: '#666' }}>
+              {(product.rating || 0).toFixed(1)} / 5
+            </p>
+          </div>
 
           <div style={{
             fontSize: '1.5rem',
@@ -153,7 +163,8 @@ export default async function ProductPage({
           color: '#888',
           border: '1px dashed #ccc'
         }}>
-          <Reviews/>
+          <ReviewList productId={product.id} />
+          <ReviewForm productId={product.id} userId={userId} />
         </div>
       </section>
     </div>
