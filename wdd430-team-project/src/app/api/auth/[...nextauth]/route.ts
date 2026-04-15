@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
-const handler = NextAuth({
+export const authOptions = {        
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -16,18 +16,14 @@ const handler = NextAuth({
             async authorize(credentials) {
                 if (!credentials?.email || !credentials?.password) return null;
 
-                // Look up user by email
                 const users = await sql`
-          SELECT *
-          FROM users
-          WHERE email = ${credentials.email};
-        `;
+                    SELECT * FROM users WHERE email = ${credentials.email};
+                `;
 
                 if (users.length === 0) return null;
 
                 const user = users[0];
 
-                // Compare password with bcrypt
                 const isValid = await bcrypt.compare(
                     credentials.password,
                     user.password
@@ -35,7 +31,6 @@ const handler = NextAuth({
 
                 if (!isValid) return null;
 
-                // Return user object for session
                 return {
                     id: user.id,
                     name: user.name,
@@ -45,8 +40,8 @@ const handler = NextAuth({
             },
         }),
     ],
-    session: { strategy: "jwt" },
-});
+    session: { strategy: "jwt" as const}, 
+};
 
+const handler = NextAuth(authOptions);      
 export { handler as GET, handler as POST };
-
