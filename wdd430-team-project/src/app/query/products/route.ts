@@ -7,8 +7,6 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
 
 export async function GET(
-    req: Request,
-    context: { params: Promise<{ id: string }> }
 ) {
 
     try {
