@@ -21,13 +21,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.2",
-<<<<<<< Updated upstream
-    "use-debounce": "^10.1.1",
-    "wdd430-team-project": "link:",
-    "zod": "^4.3.6"
-=======
     "use-debounce": "^10.1.1"
->>>>>>> Stashed changes
   },
   "devDependencies": {
     "@types/node": "^20",
