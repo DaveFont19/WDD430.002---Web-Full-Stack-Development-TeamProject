@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### Get product by ID
-GET http://localhost:3000/query/products/2cfc3bb1-49cf-4860-9872-fe1a8ecc5a17
+GET http://localhost:3000/query/products/10000001-0000-0000-0000-000000000001
 
 ### Update product price
 PATCH http://localhost:3000/query/products/2cfc3bb1-49cf-4860-9872-fe1a8ecc5a17

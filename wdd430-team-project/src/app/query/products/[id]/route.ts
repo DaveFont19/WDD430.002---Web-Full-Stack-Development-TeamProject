@@ -5,7 +5,7 @@ const sql = postgres(process.env.POSTGRES_URL!, { ssl: "require" });
 
 export async function GET(
     req: Request,
-    context: { params: { id: string } }
+    context: { params: Promise<{ id: string }> }
 ) {
     const { id } = await context.params;
 
@@ -51,7 +51,7 @@ const UpdateProductSchema = z.object({
 
 export async function PATCH(
     req: Request,
-    context: { params: { id: string } }
+    context: { params: Promise<{ id: string }> }
 ) {
     const { id } = await context.params;
 
@@ -120,7 +120,7 @@ export async function PATCH(
 
 export async function DELETE(
     req: Request,
-    context: { params: { id: string } }
+    context: { params: Promise<{ id: string }> }
 ) {
     const { id } = await context.params;
 
